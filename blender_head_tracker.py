@@ -71,7 +71,6 @@ class GAZE_OT_Zoom(bpy.types.Operator):
         self.rv3d.view_distance += (self.buffer-fsize)*context.scene.RNAefact
         self.buffer = fsize
 
-        print("gaze zoom executed")
         return {'RUNNING_MODAL'}
 
     def invoke(self, context, event):
@@ -195,13 +194,13 @@ class GAZE_OT_Rotate(bpy.types.Operator):
         x, y = (round(fratio[0]/cnt), round(fratio[1]/cnt))
 
         if self.buffer == (None, None):
-            print(f"init {x} {y}")
+            # print(f"init {x} {y}")
             self.buffer = (x, y)
             return {"RUNNING_MODAL"}
 
         ## Rotate Viewport ##
         if self.rv3d is not None:
-            print(f"output {x} {y} {self.buffer}")
+            # print(f"output {x} {y} {self.buffer}")
             if x > self.buffer[0]:
                 bpy.ops.view3d.view_orbit(
                     context.scene.RNAefact, type="ORBITRIGHT")
